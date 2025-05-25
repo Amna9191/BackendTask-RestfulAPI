@@ -46,6 +46,7 @@ dotenv – environment variables loader
 
 nodemon (dev dependency) – for development auto-reload
 
+**The database has already been populated with demo data (used demoData.js which is provided in the folder)**
 
 ## 🚀 API Endpoints
 
