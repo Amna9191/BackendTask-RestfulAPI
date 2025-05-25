@@ -5,22 +5,42 @@ const mongoose = require('mongoose');
 
 
 
-// Create a new sale
+const Sale = require('../models/Sale');
+const Product = require('../models/Product');
+const Inventory = require('../models/Inventory');
+
 exports.createSale = async (req, res) => {
   try {
     const { product, category, quantity, totalPrice, saleDate } = req.body;
 
-    // Check if product exists in database (then only create sale)
+    // Check if product exists
     const productExists = await Product.findOne({ productID: product });
     if (!productExists) {
       return res.status(404).json({ error: 'Product not found.' });
     }
 
-    // Create sale object with procided body and save it to database
+    // Check if enough stock is available
+    if (productExists.stock < quantity) {
+      return res.status(400).json({ error: 'Insufficient stock.' });
+    }
+
+    // Create the sale
     const sale = new Sale({ product, category, quantity, totalPrice, saleDate });
     await sale.save();
 
-    res.status(201).json({ message: 'Sale recorded successfully.', sale });
+    // Update product stock
+    productExists.stock -= quantity;
+    await productExists.save();
+
+    // Log inventory change
+    const inventoryLog = new Inventory({
+      product,
+      change: -quantity,
+      reason: `Sale recorded (Sale ID: ${sale._id})`
+    });
+    await inventoryLog.save();
+
+    res.status(201).json({ message: 'Sale recorded and inventory updated.', sale });
   } catch (err) {
     res.status(500).json({ error: 'Failed to record sale.', details: err.message });
   }
