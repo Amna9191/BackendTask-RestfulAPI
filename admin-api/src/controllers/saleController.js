@@ -1,12 +1,6 @@
 // Include Sale and Product Schema
 const Sale = require('../models/Sale');
 const Product = require('../models/Product');
-const mongoose = require('mongoose');
-
-
-
-const Sale = require('../models/Sale');
-const Product = require('../models/Product');
 const Inventory = require('../models/Inventory');
 
 exports.createSale = async (req, res) => {

@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 
+const MONGODB_URI = "mongodb+srv://dummyUser:1pEuYKNpYkHttrxU@admin.lnejgtm.mongodb.net/?retryWrites=true&w=majority&appName=Admin";
+
 const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    await mongoose.connect(MONGODB_URI); // No options needed in recent versions
     console.log('MongoDB connected');
   } catch (err) {
     console.error('MongoDB connection error:', err.message);
@@ -14,3 +13,4 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
+
