@@ -8,9 +8,9 @@ connectDB(); // connect to database
 app.use(express.json());
 
 // Route Imports
-productRoutes = require('./routes/productRoutes');
-salesRoutes = require('./routes/salesRoutes');
-inventoryRoutes = require('./routes/inventoryRoutes');
+const productRoutes = require('./routes/productRoutes');
+const salesRoutes = require('./routes/salesRoutes');
+const inventoryRoutes = require('./routes/inventoryRoutes');
 
 // Mount API routes
 app.use('/api/products', productRoutes);
