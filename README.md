@@ -57,6 +57,7 @@ All endpoints return JSON responses and are prefixed with `/api`.
 #### Inventory Management
 - **Get inventory logs**
   - `GET /inventory/logs`
+  - http://localhost:5000/api/inventory/logs
   - Retrieves all stock change records (newest first)
   - **Response Example:**
     ```json
@@ -74,6 +75,7 @@ All endpoints return JSON responses and are prefixed with `/api`.
 
 - **Get current inventory**  
   - `GET /inventory/status`
+  - http://localhost:5000/api/inventory/status
   - Returns current stock levels for all products
   - **Response Example:**
     ```json
@@ -89,6 +91,7 @@ All endpoints return JSON responses and are prefixed with `/api`.
 
 - **Get low stock alerts**
   - `GET /inventory/lowStock?threshold=<number>`
+  - http://localhost:5000/api/inventory/lowStock or http://localhost:5000/api/inventory/lowStock?threshold=
   - Returns products with stock below threshold (default: 10)
   - **Example:**
     ```
@@ -97,6 +100,7 @@ All endpoints return JSON responses and are prefixed with `/api`.
 
 - **Update inventory**  
   - `POST /inventory/update`
+  - http://localhost:5000/api/inventory/updateInventory
   - Adjusts product stock levels
   - **Request Body:**
     ```json
@@ -112,6 +116,7 @@ All endpoints return JSON responses and are prefixed with `/api`.
 #### Sales Operations
 - **Get all sales**
   - `GET /sales/getSales`
+  - http://localhost:5000/api/sales/getSales
   - Retrieves complete sales history (newest first)
   - **Response Example:**
     ```json
@@ -128,6 +133,7 @@ All endpoints return JSON responses and are prefixed with `/api`.
 
 - **Create new sale**
   - `POST /sales/createSale`
+  - http://localhost:5000/api/sales/createSale
   - Records a new transaction
   - **Request Body:**
     ```json
@@ -141,6 +147,7 @@ All endpoints return JSON responses and are prefixed with `/api`.
 #### Sales Analytics
 - **Filter sales**
   - `POST /sales/filterSales`
+  - http://localhost:5000/api/sales/filterSales
   - Queries sales by product/category/date range
   - **Request Body:**
     ```json
@@ -152,17 +159,18 @@ All endpoints return JSON responses and are prefixed with `/api`.
     ```
 
 - **Revenue reports**
-  - `GET /sales/dailyRevenue` - Daily sales
-  - `GET /sales/weeklyRevenuey` - Weekly sales  
-  - `GET /sales/monthlyRevenue` - Monthly sales
-  - `GET /sales/annualRevenue` - Annual sales
-  - `GET /sales/categoryRevenue` - By category
+  - `GET /sales/dailyRevenue` - Daily sales (http://localhost:5000/api/sales/dailyRevenue)
+  - `GET /sales/weeklyRevenuey` - Weekly sales (http://localhost:5000/api/sales/weeklyRevenue)  
+  - `GET /sales/monthlyRevenue` - Monthly sales (http://localhost:5000/api/sales/monthlyRevenue)
+  - `GET /sales/annualRevenue` - Annual sales (http://localhost:5000/api/sales/annualRevenue)
+  - `GET /sales/categoryRevenue` - By category (http://localhost:5000/api/sales/categoryRevenue)
 
 ### 🛍 Products API
 
 #### Product Operations
 - **Get all products**
   - `GET /products/getProducts`
+  - http://localhost:5000/api/products/getProducts
   - Lists all available products
   - **Response Example:**
     ```json
@@ -177,6 +185,7 @@ All endpoints return JSON responses and are prefixed with `/api`.
     ```
 - **Get products by category**
   - `GET /products/getProductsBycategory/:categorys`
+  - http://localhost:5000/api/products/getProductsBycategory/:category
   - Lists all available products for the category
   - **Example:**
     ```
@@ -187,6 +196,7 @@ All endpoints return JSON responses and are prefixed with `/api`.
 
 - **Get product details**
   - `GET /products/getProduct/:productID`
+  - http://localhost:5000/api/products/getProduct/:productID
   - Returns full product information
   - **Example:**
     ```
@@ -195,6 +205,7 @@ All endpoints return JSON responses and are prefixed with `/api`.
 
 - **Create product**
   - `POST /products/addProduct`
+  - http://localhost:5000/api/products/addProduct
   - Adds new product to catalog
   - **Request Body:**
     ```json
@@ -208,6 +219,7 @@ All endpoints return JSON responses and are prefixed with `/api`.
 
 - **Update product**
   - `PUT /products/updateProduct/:productID`
+  - http://localhost:5000/api/products/updateProduct/:productID
   - Modifies product details
   - **Request Body:**
     ```json
@@ -219,6 +231,7 @@ All endpoints return JSON responses and are prefixed with `/api`.
 
 - **Delete product**
   - `DELETE /products/deleteProduct/:productID`
+  - http://localhost:5000/api/products/deleteProduct/:productID
   - Removes product from system
   - **Response:**
     ```json
