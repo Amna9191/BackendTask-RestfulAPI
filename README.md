@@ -1,5 +1,3 @@
-# BackendTask-RestfulAPI
-
 # Inventory and Sales Management API
 ---
 
